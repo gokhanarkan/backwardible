@@ -1,0 +1,14 @@
+{
+  "name": "boxlist",
+  "version": "1.0.0",
+  "main": "methods.js",
+  "author": "Gokhan Arkan",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "dotenv": "^8.2.0",
+    "pg": "^8.4.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.3.5"
+  }
+}
