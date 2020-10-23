@@ -1,10 +1,9 @@
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 const fs = require("fs");
 const axios = require("axios");
-const db = require("./database");
 const Game = require("./game");
 
-dotenv.config({ path: './config.env' });
+dotenv.config({ path: "./config.env" });
 
 const headers = {
   "x-rapidapi-host": process.env.HEADER_HOST,
@@ -18,41 +17,32 @@ exports.readFile = async (path) => {
   return array.toString().split("\n");
 };
 
-exports.getData = async (game, platform) => {
-  try {
-    const response = await axios.get(`${url}${game}`, {
+exports.getData = (game, platform) => {
+  return axios
+    .get(`${url}${game}`, {
       headers: headers,
-      params: platform,
-    });
-    return response;
-  } catch (err) {
-    return err;
-  }
+      params: {
+        platform: platform,
+      },
+    })
+    .then((res) => res.data);
 };
 
 exports.writeDB = async (game) => {
   try {
     Game.create({
       title: game.title,
+      releaseDate: game.releaseDate,
       description: game.description,
       genre: game.genre,
       image: game.image,
       score: game.score,
       developer: game.developer,
       publisher: game.publisher,
-      // alsoAvailable: game.alsoAvailableOn
+      rating: game.rating,
+      alsoAvailable: game.alsoAvailableOn,
     });
   } catch (err) {
     console.log(err);
   }
 };
-
-// Game.create({
-// 	title: 'Test',
-// 	description: 'Test2',
-// 	genre: ['test1', 'test2'],
-// 	image: 'test3',
-// 	score: 99,
-// 	developer: 'HelloWorld Designs',
-// 	publisher: ['test3', 'test4'],
-// })

@@ -45,3 +45,5 @@ config.env
 
 # Vs Code
 .vscode/
+
+boxlist/node_modules
