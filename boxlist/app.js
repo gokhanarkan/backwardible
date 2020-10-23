@@ -4,7 +4,6 @@ const { readFile, getData, writeDB } = require("./controller");
 const gamesPath = path.resolve("./gamelist.txt");
 const platforms = ["xbox-360", "xbox"];
 
-const db = require("./database");
 const Game = require("./game");
 
 async function resetDB() {
@@ -15,6 +14,7 @@ async function resetDB() {
 async function main() {
   const file = await readFile(gamesPath);
   for (let i = 0; i < file.length; i++) {
+    console.log(file[i]);
     const game = encodeURI(file[i]);
     let data = await getData(game, platforms[0]);
 
@@ -23,8 +23,8 @@ async function main() {
       data = await getData(game, platforms[1]);
     }
     // If it is still not available
-    if (data.result === "No result") {
-      console.log(file[i]);
+    if (data.result !== "No result") {
+      await writeDB(data.result);
     }
   }
 }

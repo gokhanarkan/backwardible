@@ -9,7 +9,7 @@ const Game = db.define("game", {
     type: DataTypes.STRING,
   },
   description: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
   },
   genre: {
     type: DataTypes.ARRAY(DataTypes.STRING),
