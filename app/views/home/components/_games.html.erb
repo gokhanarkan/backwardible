@@ -1,0 +1,45 @@
+<% @games.each do |game| %>
+      <style>
+      button {
+      background-color: #6617cb;
+      background-image: linear-gradient(315deg, #6617cb 0%, #cb218e 74%);
+      box-shadow: 0 0 0 0 #ec008c, 0.2rem 0.2rem 30px #6617cb;
+      }
+      button:hover {
+      box-shadow: 0 0 0 0 #ec008c, 0.2rem 0.2rem 60px #6617cb;
+      }
+   </style>
+   <div class="container mx-auto max-w-xs rounded-lg overflow-hidden shadow-lg my-2 bg-green-100">
+      <div class="relative mb-6">
+         <img class="w-full" src=<%= game.image %>
+            alt="Game cover" />
+         <div class="text-center absolute w-full" style="bottom: -30px">
+            <div class="mb-10">
+               <p class="text-white tracking-wide uppercase text-lg font-bold"> <%= game.title %> </p>
+            </div>
+            <button class="p-4 rounded-full transition ease-in duration-200 focus:outline-none">
+               <svg viewBox="0 0 20 20" enable-background="new 0 0 20 20" class="w-6 h-6">
+                  <path fill="#FFFFFF" d="M16,10c0,0.553-0.048,1-0.601,1H11v4.399C11,15.951,10.553,16,10,16c-0.553,0-1-0.049-1-0.601V11H4.601
+                     C4.049,11,4,10.553,4,10c0-0.553,0.049-1,0.601-1H9V4.601C9,4.048,9.447,4,10,4c0.553,0,1,0.048,1,0.601V9h4.399
+                     C15.952,9,16,9.447,16,10z" />
+               </svg>
+            </button>
+         </div>
+      </div>
+      <div class="py-10 px-6 text-center tracking-wide grid grid-cols-3 gap-6">
+         <div class="posts">
+            <p class="text-lg text-green-900"> <%= game.score %> </p>
+            <p class="text-green-900 text-sm">Score</p>
+         </div>
+         <div class="followers">
+            <p class="text-md text-green-900"> <%= game.release_date %> </p>
+            <p class="text-green-900 text-sm">Release Date</p>
+         </div>
+         <div class="following">
+            <p class="text-lg text-green-900"> <%= game.rating %> </p>
+            <p class="text-green-900 text-sm">Age Rating</p>
+         </div>
+      </div>
+   </div>
+
+<% end %>
