@@ -76,8 +76,4 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  adapter: postgresql
-  database: backwardible_production
-  username: backwardible
-  password: <%= ENV['BACKWARDIBLE_BACKEND_DATABASE_PASSWORD'] %>
-  pool: <%#= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  url: <%= ENV.fetch('DATABASE_URI') %>
