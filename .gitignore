@@ -42,8 +42,11 @@ db/development.sqlite3
 
 # Config file
 config.env
+.env
 
 # Vs Code
 .vscode/
+.idea/
 
 boxlist/node_modules
+data.csv
