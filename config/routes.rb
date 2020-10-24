@@ -14,6 +14,6 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
 
   root 'home#index'
-  get ':id', to: 'home#index'
+  get 'top', to: 'home#top'
 
 end

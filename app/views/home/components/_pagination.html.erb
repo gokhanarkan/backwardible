@@ -19,11 +19,11 @@
         <div class="hidden md:flex">
             <% for page in @page_range do %>
             <% if page == @current_page %>
-            <a href="/?page=<%= page %>" class="-mt-px border-t-2 border-green-500 pt-4 px-4 inline-flex items-center text-sm leading-5 font-medium text-green-600 focus:outline-none focus:text-green-800 focus:border-green-700 transition ease-in-out duration-150">
+            <a href="?page=<%= page %>" class="-mt-px border-t-2 border-green-500 pt-4 px-4 inline-flex items-center text-sm leading-5 font-medium text-green-600 focus:outline-none focus:text-green-800 focus:border-green-700 transition ease-in-out duration-150">
                 <%= page %>
             </a>
             <% else %>
-            <a href="/?page=<%= page %>" class="-mt-px border-t-2 border-transparent pt-4 px-4 inline-flex items-center text-sm leading-5 font-medium  text-white hover:text-green-500 hover:border-gray-300 focus:outline-none focus:text-green-600 focus:border-gray-400 transition ease-in-out duration-150">
+            <a href="?page=<%= page %>" class="-mt-px border-t-2 border-transparent pt-4 px-4 inline-flex items-center text-sm leading-5 font-medium  text-white hover:text-green-500 hover:border-gray-300 focus:outline-none focus:text-green-600 focus:border-gray-400 transition ease-in-out duration-150">
                 <%= page %>
             </a>
             <% end %>
