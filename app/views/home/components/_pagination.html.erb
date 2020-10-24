@@ -3,7 +3,7 @@
         <div class="w-0 flex-1 flex">
             <% if !@first_page %>
 
-            <a href="<%= @previous_page %>"
+            <a href="<%= path_to_prev_page @games %>"
                 class="-mt-px border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm leading-5 font-medium text-white hover:text-green-500 hover:border-gray-300 focus:outline-none focus:text-green-600 focus:border-gray-400 transition ease-in-out duration-150">
                 <svg class="mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                     fill="currentColor">
@@ -17,9 +17,8 @@
         </div>
         <div class="hidden md:flex">
 
-        <% for page in 1..9 do %>
-
-            <a href="<%= page %>"
+        <% for page in @page_range do %>
+            <a href="/?page=<%= page %>"
                 class="-mt-px border-t-2 border-transparent pt-4 px-4 inline-flex items-center text-sm leading-5 font-medium  text-white hover:text-green-500 hover:border-gray-300 focus:outline-none focus:text-green-600 focus:border-gray-400 transition ease-in-out duration-150">
                 <%= page %>
             </a>
@@ -28,7 +27,7 @@
         </div>
         <div class="w-0 flex-1 flex justify-end">
         <% if !@last_page %>
-            <a href="<%= @next_page %>"
+            <a href="<%= path_to_next_page @games %>"
                 class="-mt-px border-t-2 border-transparent pt-4 pl-1 inline-flex items-center text-sm leading-5 font-medium text-white hover:text-green-500 hover:border-gray-300 focus:outline-none focus:text-green-600 focus:border-gray-400 transition ease-in-out duration-150">
                 Next
                 <svg class="ml-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -40,5 +39,12 @@
             </a>
             <% end %>
         </div>
+        
     </nav>
+<%= page_entries_info @games %>
+
 </div>
+
+
+
+

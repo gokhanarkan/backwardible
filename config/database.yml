@@ -20,7 +20,7 @@ default: &default
   timeout: 5000
 
 development:
-  url: <%= ENV.fetch('DATABASE_URI') %>
+  url: <%= ENV.fetch('DATABASE_URL') %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -76,4 +76,4 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  url: <%= ENV.fetch('DATABASE_URI') %>
+  url: <%= ENV.fetch('DATABASE_URL') %>
