@@ -4,7 +4,7 @@ class HomeController < ApplicationController
     # Get the page param
     page = params[:page].presence || '1'
     # Grab data from db
-    @games = Game.page(page).per(12)
+    @games = Game.page(page).per(14)
     @nav = 'home'
     get_data
 
@@ -12,7 +12,7 @@ class HomeController < ApplicationController
 
   def top
     page = params.fetch(:page, '1')
-    @games = Game.order(score: :desc).page(page).per(12)
+    @games = Game.order(score: :desc).page(page).per(14)
     @nav = 'top'
     get_data
     render 'home/index'
