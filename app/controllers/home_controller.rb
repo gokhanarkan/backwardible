@@ -2,9 +2,10 @@ class HomeController < ApplicationController
   
   def index
     # Get the page param
-    page = params.fetch(:page, '1')
+    page = params[:page].presence || '1'
     # Grab data from db
     @games = Game.page(page).per(12)
+    @nav = 'home'
     get_data
 
   end
@@ -12,7 +13,25 @@ class HomeController < ApplicationController
   def top
     page = params.fetch(:page, '1')
     @games = Game.order(score: :desc).page(page).per(12)
+    @nav = 'top'
     get_data
+    render 'home/index'
+  end
+
+  def table
+    @games = Game.all
+    @nav = 'table'
+    render 'home/table'
+  end
+
+  def search
+    query = params[:q].presence || false
+    if !query
+      redirect_to '/' and return
+    end
+    @games = Game.search(query, fields: ["title^10", "description"])
+    get_data
+    @paginate = false
     render 'home/index'
   end
 
@@ -31,6 +50,8 @@ class HomeController < ApplicationController
     @next_page = @games.next_page
     @first_page = @games.first_page?
     @last_page = @games.last_page?
+
+    @paginate = true
 
     # Create pages
     @page_range = if @first_page || @current_page < 4

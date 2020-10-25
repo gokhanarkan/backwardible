@@ -1,8 +1,35 @@
 <header>
-  <nav class="bg-green-900 mb-10 lg:mb-16 xl:mb-20">
-    <div class="block">
-      <%= image_tag("Logo.svg", :alt => "Backwardible Logo", :class => "block w-12 ml-4 mt-4") %>
-      <%#= image_tag("Backwardible", :alt => "Logo", :class => "block ml-2 w-24 text-white") %>
-    </div>
-  </nav>
+    <nav class="bg-green-900 mb-10 lg:mb-10">
+        <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+            <div class="relative flex items-center justify-between h-16">
+                <div class="flex items-center px-2 lg:px-0">
+                    <div class="flex-shrink-0">
+                        <%= image_tag("Logo.svg", :alt => "Backwardible Logo", :class => "block w-12 ml-4") %>
+                    </div>
+                    <div class="hidden lg:block lg:ml-6">
+                        <div class="flex">
+                            <a href="/" class="px-3 py-2 rounded-md text-sm leading-5 font-medium text-white hover:bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out <%= 'bg-gray-900' if @nav == 'home' %> ">Home</a>
+                            <a href="/top" class="ml-4 px-3 py-2 rounded-md text-sm leading-5 font-medium text-gray-300 hover:text-white hover:bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out <%= 'bg-gray-900' if @nav == 'top' %> ">Top</a>
+                            <a href="/table" class="ml-4 px-3 py-2 rounded-md text-sm leading-5 font-medium text-gray-300 hover:text-white hover:bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out <%= 'bg-gray-900' if @nav == 'table' %> ">Table View</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1 flex justify-center px-2 lg:ml-6 lg:justify-end">
+                    <div class="max-w-lg w-full lg:max-w-xs">
+                      <form method="GET" action="/search">
+                        <label for="q" class="sr-only">Search</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <input name="q" id="search" class="block w-full pl-10 pr-3 py-2 border border-transparent rounded-md leading-5 placeholder-gray-400 focus:outline-none bg-white text-gray-900 sm:text-sm transition duration-150 ease-in-out" placeholder="Search" type="search">
+                        </div>
+                      </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
 </header>
