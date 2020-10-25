@@ -3,14 +3,14 @@
         <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
             <div class="relative flex items-center justify-between h-16">
                 <div class="flex items-center px-2 lg:px-0">
-                    <div class="flex-shrink-0">
+                    <div class="hidden lg:block flex-shrink-0">
                         <%= image_tag("Logo.svg", :alt => "Backwardible Logo", :class => "block w-12 ml-4") %>
                     </div>
-                    <div class="hidden lg:block lg:ml-6">
+                    <div class="lg:block lg:ml-6">
                         <div class="flex">
-                            <a href="/" class="px-3 py-2 rounded-md text-sm leading-5 font-medium text-white hover:bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out <%= 'bg-gray-900' if @nav == 'home' %> ">Home</a>
-                            <a href="/top" class="ml-4 px-3 py-2 rounded-md text-sm leading-5 font-medium text-gray-300 hover:text-white hover:bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out <%= 'bg-gray-900' if @nav == 'top' %> ">Top</a>
-                            <a href="/table" class="ml-4 px-3 py-2 rounded-md text-sm leading-5 font-medium text-gray-300 hover:text-white hover:bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out <%= 'bg-gray-900' if @nav == 'table' %> ">Table View</a>
+                            <a href="/" class="px-1 md:px-3 py-2 rounded-md text-sm leading-5 font-medium text-white hover:bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out <%= 'bg-gray-900' if @nav == 'home' %> ">Home</a>
+                            <a href="/top" class="ml-1 md:ml-4 px-1 md:px-3 py-2 rounded-md text-sm leading-5 font-medium text-gray-300 hover:text-white hover:bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out <%= 'bg-gray-900' if @nav == 'top' %> ">Top</a>
+                            <a href="/table" class="ml-1 md:ml-4 px-1 md:px-3 py-2 rounded-md text-sm leading-5 font-medium text-gray-300 hover:text-white hover:bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out <%= 'bg-gray-900' if @nav == 'table' %> ">Table View</a>
                         </div>
                     </div>
                 </div>
