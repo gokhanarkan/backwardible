@@ -50,3 +50,4 @@ config.env
 
 boxlist/node_modules
 data.csv
+clean_data.csv

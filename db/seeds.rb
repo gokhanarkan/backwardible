@@ -8,14 +8,14 @@
 require 'csv'
 require 'json'
 
-csv_text = File.read('./db/data.csv')
-csv = CSV.parse(csv_text, headers: true)
+csv_text = File.read('./db/clean_data.csv')
+csv = CSV.parse(csv_text)
 csv.each do |row|
-  genre = JSON.parse(row['genre'])
-  publisher = JSON.parse(row['publisher'])
-  also_available = JSON.parse(row['alsoAvailable'])
-  Game.create(title: row['title'], release_date: row['releaseDate'],
-              description: row['description'], genre: genre,
-              image: row['image'], score: row['score'], developer: row['developer'],
-              publisher: publisher, rating: row['rating'], also_available: also_available)
+  genre = JSON.parse(row[4])
+  publisher = JSON.parse(row[8])
+  also_available = JSON.parse(row[10])
+  Game.create(title: row[1], release_date: row[2],
+              description: row[3], genre: genre,
+              image: row[5], score: row[6].to_i, developer: row[7],
+              publisher: publisher, rating: row[9], also_available: also_available)
 end
