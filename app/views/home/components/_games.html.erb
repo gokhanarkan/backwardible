@@ -50,7 +50,7 @@
 
                 <!--Body-->
                 <p class="text-black mb-2"> 👾 &nbsp; <%=game.genre[0] %> &nbsp; | &nbsp; 📅 &nbsp; <%= game.release_date %> </p>
-                <p class="text-black text-xs"> <%= game.description %> </p>
+                <div class="overflow-y-auto h-32"><p class="text-black text-xs"> <%= game.description %> </p></div>
                 <!--Footer-->
                 <div class="flex justify-end pt-2">
                     <button
