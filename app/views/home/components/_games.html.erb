@@ -1,7 +1,7 @@
 <ul class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 mt-6">
     <% @games.each do |game| %>
     <li class="mx-auto">
-        <div>
+        <div class="text-center">
             <%= image_tag game.image, class: "w-32 mx-auto rounded-md" %>
         </div>
         <p class="mx-auto text-center">
