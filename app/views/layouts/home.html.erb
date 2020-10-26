@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html class="antialiased">
-  <%= render "shared/head" %>
+<%= render "shared/head" %>
 
-  <body class="font-sans font-normal leading-normal text-white bg-green-900">
-    <%= render "shared/flash_notice" %>
-    <%= render "shared/header" %>
+<body class="font-sans font-normal leading-normal text-white bg-green-900">
+  <%= render "shared/flash_notice" %>
+  <%= render "shared/header" %>
 
-    <%= render "home/components/pagination-top" %>
+  <%= render "home/components/pagination-top" %>
 
-    <main class="px-4 lg:px-10">
-      <%= content_for?(:content) ? yield(:content) : yield %>
-    </main>
-    <%= render "home/components/pagination" %>
-    <%= render "home/components/footer" %>
-  </body>
+  <main class="px-4 lg:px-16 xl:py-12 xl:px-32 mx-auto">
+    <%= content_for?(:content) ? yield(:content) : yield %>
+  </main>
+
+  <%= render "home/components/pagination" %>
+  <%= render "home/components/footer" %>
+
+</body>
+
 </html>
