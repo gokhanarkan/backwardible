@@ -8,7 +8,7 @@
 require 'csv'
 require 'json'
 
-csv_text = File.read('./db/clean_data.csv')
+csv_text = File.read('./db/prod_data.csv')
 csv = CSV.parse(csv_text)
 csv.each do |row|
   genre = JSON.parse(row[4])
