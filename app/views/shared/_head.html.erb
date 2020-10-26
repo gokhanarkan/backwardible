@@ -21,4 +21,15 @@
    <%= stylesheet_pack_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
    <%= javascript_pack_tag  'application', 'data-turbolinks-track': 'reload' %>
    <%#= javascript_include_tag 'https://js.stripe.com/v3/', 'data-turbolinks-track': 'reload' %>
+
+   <style>
+     .modal {
+       transition: opacity 0.25s ease;
+     }
+
+     body.modal-active {
+       overflow-x: hidden;
+       overflow-y: visible !important;
+     }
+   </style>
  </head>

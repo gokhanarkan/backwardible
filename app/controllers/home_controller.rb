@@ -1,9 +1,7 @@
 class HomeController < ApplicationController
   
   def index
-    # Get the page param
     page = params[:page].presence || '1'
-    # Grab data from db
     @games = Game.page(page).per(14)
     @nav = 'home'
     get_data
@@ -26,10 +24,10 @@ class HomeController < ApplicationController
 
   def search
     query = params[:q].presence || false
-    if !query
+    unless query
       redirect_to '/' and return
     end
-    @games = Game.search(query, fields: ["title^10", "description"])
+    @games = Game.search(query, fields: ['title^10', 'description'])
     get_data
     @paginate = false
     render 'home/index'
@@ -67,7 +65,7 @@ class HomeController < ApplicationController
 
   def render_404
     respond_to do |format|
-      format.html { render :file => "#{Rails.root}/public/404", :layout => false, :status => :not_found }
+      format.html { render file: "#{Rails.root}/public/404", layout: false, status: :not_found }
       format.xml  { head :not_found }
       format.any  { head :not_found }
     end

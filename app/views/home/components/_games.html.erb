@@ -1,16 +1,115 @@
 <ul class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 mt-6">
     <% @games.each do |game| %>
     <li class="mx-auto">
-        <div class="text-center">
-            <%= image_tag game.image, class: "w-32 mx-auto rounded-md" %>
-        </div>
+        <a class="modal-open modal-open-<%= game.id %> cursor-pointer" onclick="selectId(<%= game.id %>)">
+
+            <div class="text-center">
+                <%= image_tag game.image, class: "w-32 mx-auto rounded-md" %>
+            </div>
+        </a>
+
         <p class="mx-auto text-center">
             <%= game.title %>
         </p>
         <div class="mx-auto text-center">
-            <b>
-                <%= game.score %> </b>
+            <b> ⭐ &nbsp; <%= game.score %> </b>
         </div>
     </li>
+
+    <div
+        class="modal-<%= game.id %> opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
+        <div class="modal-overlay modal-overlay-<%= game.id %> absolute w-full h-full bg-gray-900 opacity-50"></div>
+
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+
+            <div
+                class="modal-close modal-close-<%= game.id %> absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
+                <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                    viewBox="0 0 18 18">
+                    <path
+                        d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+                    </path>
+                </svg>
+                <span class="text-sm">(Esc)</span>
+            </div>
+
+            <!-- Add margin if you want to see some of the overlay behind the modal-->
+            <div class="modal-content py-4 text-left px-6">
+                <!--Title-->
+                <div class="flex justify-between items-center pb-3">
+                    <p class="text-2xl font-bold text-green-900"> 🎮 <%= game.title %> (<%= game.publisher[0] %>) </p>
+                    <div class="modal-close modal-close-<%= game.id %> cursor-pointer z-50">
+                        <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                            viewBox="0 0 18 18">
+                            <path
+                                d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+
+                <!--Body-->
+                <p class="text-black mb-2"> 👾 &nbsp; <%=game.genre[0] %> &nbsp; | &nbsp; 📅 &nbsp; <%= game.release_date %> </p>
+                <p class="text-black text-xs"> <%= game.description %> </p>
+                <!--Footer-->
+                <div class="flex justify-end pt-2">
+                    <button
+                        class="modal-close modal-close-<%= game.id %> px-4 bg-green-800 p-3 rounded-lg text-white hover:bg-green-600 font-bold">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <% end %>
 </ul>
+
+<script>
+
+var id = 0;
+
+var openmodal = document.querySelectorAll(".modal-open");
+for (var i = 0; i < openmodal.length; i++) {
+  openmodal[i].addEventListener("click", function (event) {
+    event.preventDefault();
+    toggleModal();
+  });
+}
+
+var overlay = document.querySelectorAll(".modal-overlay");
+for (var i = 0; i < overlay.length; i++) {
+  overlay[i].addEventListener("click", function (event) {
+    event.preventDefault();
+  });
+}
+
+var closemodal = document.querySelectorAll(".modal-close");
+for (var i = 0; i < closemodal.length; i++) {
+  closemodal[i].addEventListener("click", toggleModal);
+}
+
+document.onkeydown = function (evt) {
+  evt = evt || window.event;
+  var isEscape = false;
+  if ("key" in evt) {
+    isEscape = evt.key === "Escape" || evt.key === "Esc";
+  } else {
+    isEscape = evt.keyCode === 27;
+  }
+  if (isEscape && document.body.classList.contains("modal-active")) {
+    toggleModal(id);
+  }
+};
+
+function toggleModal() {
+  const body = document.querySelector("body");
+  const modal = document.querySelector(`.modal-${id}`);
+  modal.classList.toggle("opacity-0");
+  modal.classList.toggle("pointer-events-none");
+  body.classList.toggle("modal-active");
+}
+
+function selectId(id) {
+    this.id = id;
+}
+</script>
