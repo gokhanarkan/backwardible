@@ -16,23 +16,6 @@ class HomeController < ApplicationController
     render 'home/index'
   end
 
-  def table
-    @games = Game.all
-    @nav = 'table'
-    render 'home/table'
-  end
-
-  def search
-    query = params[:q].presence || false
-    unless query
-      redirect_to '/' and return
-    end
-    @games = Game.search(query, fields: ['title^10', 'description'])
-    get_data
-    @paginate = false
-    render 'home/index'
-  end
-
   def get_data
     # Create attributes of the data
     @current_page = @games.current_page
