@@ -8,4 +8,12 @@ class SearchController < ApplicationController
     @paginate = false
     render 'home/index'
   end
+
+  def autocomplete
+    query = params[:query].presence || false
+    puts query
+    data = Game.search(query, fields: ['title^10'])
+    puts data
+    render json: data
+  end
 end

@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   get 'top', to: 'home#top'
   get 'table', to: 'table#index'
   get 'search', to: 'search#index'
+  get 'search/autocomplete', to: 'search#autocomplete'
 
 end
