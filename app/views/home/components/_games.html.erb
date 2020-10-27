@@ -4,16 +4,15 @@
         <a class="modal-open modal-open-<%= game.id %> cursor-pointer" onclick="selectId(<%= game.id %>)">
 
             <div class="text-center">
-                <%= image_tag game.image, class: "w-32 mx-auto rounded-md" %>
+                <%= image_tag game.image, class: "w-30 h-40 mx-auto rounded-md" %>
             </div>
         </a>
-
-        <p class="mx-auto text-center">
-            <%= game.title %>
-        </p>
-        <div class="mx-auto text-center">
+        <div class="mx-auto text-center text-sm mt-2">
             <b> ⭐ &nbsp; <%= game.score %> </b>
         </div>
+        <p class="mx-auto text-center text-sm mt-1">
+            <%= game.title %>
+        </p>
     </li>
 
     <div
