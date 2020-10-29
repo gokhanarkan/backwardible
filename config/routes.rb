@@ -15,8 +15,10 @@ Rails.application.routes.draw do
 
   root 'home#index'
   get 'top', to: 'home#top'
-  get 'table', to: 'table#index'
+
   get 'search', to: 'search#index'
   get 'search/autocomplete', to: 'search#autocomplete'
 
+  get 'table', to: 'table#index'
+  get 'table/top', to: 'table#top'
 end
